@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import os
 import csv
-sys.path.append('%s/Egopol/Enumeration' % os.path.expanduser("~"))
 from igraph import Graph
 import argparse
 import enumerate
