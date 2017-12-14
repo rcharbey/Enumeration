@@ -26,7 +26,6 @@ if __name__ == "__main__":
     folder = 'three'
     ego = args.ego
     k = args.k
-    print ego
     
     """
        enumerate imports the graph from the ml file created by init and runs the enumeration algo on it.
@@ -34,6 +33,9 @@ if __name__ == "__main__":
     """
     graph = import_graph(folder, ego)
     pt, ps = enumerate.characterize_with_patterns(graph, int(k))
+    print k
+    print pt
+    print ps
     
     home = os.path.expanduser('~')
     
