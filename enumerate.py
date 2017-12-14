@@ -57,11 +57,15 @@ def extend_subgraph(graph, k, graph_sub, v, vext):
 def characterize_with_patterns(graph, k):
     create_list_neighbors(graph)
     global PT
-    global PS
-    PT = 30*[0]
+    global PS    
+    size_pt_per_k = [2:1, 3:3, 4:9, 5:30]
+    size_ps_per_k = [2:1, 3:4, 4:15, 5:73]
+    
+    PT = size_pt_per_k[k]*[0]
     PS = []
+    
     for v in graph.vs:
-        PS.append(73*[0])
+        PS.append(size_ps_per_k[k]*[0])
         v['id_sub'] = -1
     for v in graph.vs:
         graph_sub = Graph.Formula()
