@@ -8,9 +8,10 @@ import enumerate
 
 
 def import_graph(folder, ego):
-    if not os.path.isfile('GALLERY/'+folder+'/'+ego+'/Graphs/friends.gml'):
+    home = os.path.expanduser('~')
+    if not os.path.isfile('%s/GALLERY/'+folder+'/'+ego+'/Graphs/friends.gml' % home):
         return Graph.Formula('')
-    graph = Graph.Read_GML('GALLERY/'+folder+'/'+ego+'/Graphs/friends.gml')
+    graph = Graph.Read_GML('%s/GALLERY/'+folder+'/'+ego+'/Graphs/friends.gml' % home)
     graph['folder'] = folder
     graph['ego'] = ego
     return graph
