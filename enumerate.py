@@ -58,8 +58,8 @@ def characterize_with_patterns(graph, k):
     create_list_neighbors(graph)
     global PT
     global PS    
-    size_pt_per_k = [2:1, 3:3, 4:9, 5:30]
-    size_ps_per_k = [2:1, 3:4, 4:15, 5:73]
+    size_pt_per_k = {2:1, 3:3, 4:9, 5:30}
+    size_ps_per_k = {2:1, 3:4, 4:15, 5:73}
     
     PT = size_pt_per_k[k]*[0]
     PS = []
