@@ -34,6 +34,7 @@ if __name__ == "__main__":
     graph = import_graph(folder, ego)
     pt, ps = enumerate.characterize_with_patterns(graph, int(k))
     print k
+    print graph
     print pt
     print ps
     
