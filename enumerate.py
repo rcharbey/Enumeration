@@ -3,12 +3,22 @@
 import sys
 import os
 sys.path.append('%s/Egopol/Graphs' % os.path.expanduser("~"))
-import methods_graph
 import index_degree
 from igraph import Graph
 
 PT = []
 PS = []
+
+def create_list_neighbors(graph):
+    for v in graph.vs:
+        v['list_neighbors'] = []
+    for e in graph.es:
+        if not e.source in graph.vs[e.target]['list_neighbors']:
+            graph.vs[e.target]['list_neighbors'].append(e.source)
+        if not e.target in graph.vs[e.source]['list_neighbors']:
+            graph.vs[e.source]['list_neighbors'].append(e.target)
+    for v in graph.vs:
+        v['list_neighbors'].sort(reverse = True)
 
 def in_neighborhood_vsub(graph, list_neighbors, length_vsub):
     for n in list_neighbors:
@@ -45,7 +55,7 @@ def extend_subgraph(graph, k, graph_sub, v, vext):
         w['id_sub'] = -1
 
 def characterize_with_patterns(graph, k):
-    methods_graph.create_list_neighbors(graph)
+    create_list_neighbors(graph)
     global PT
     global PS
     PT = 30*[0]
@@ -54,7 +64,6 @@ def characterize_with_patterns(graph, k):
         PS.append(73*[0])
         v['id_sub'] = -1
     for v in graph.vs:
-
         graph_sub = Graph.Formula()
         v['id_sub'] = 0
         if not 'name' in v.attributes():
